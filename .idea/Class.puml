@@ -1,0 +1,97 @@
+@startuml
+'https://plantuml.com/class-diagram
+!pragma layout smetana
+
+class FileIO
+class Movies
+class Series
+Abstract Class Media
+class TextUI
+class User
+class Menu
+class Main
+
+Media <|-- Movies
+Media <|-- Series
+
+Main *-- Menu
+Menu *-- User
+Menu *-- Media
+Menu *-- FileIO
+Menu *-- TextUI
+User *-- FileIO
+User *-- TextUI
+Media *-- FileIO
+Media *-- TextUI
+
+class TextUI
+{
+Scanner scanner
+
+public String getInput()
+public void displayMessage()
+}
+
+class FileIO {
+File file
+Filewriter writer
+public void saveLogin(Arraylist<user> login)
+public boolean readFile()
+public Arraylist<String> scanMedia()
+public Arraylist<String> scanMediaCategeories()
+}
+
+class Main {
+public static void main ()
+}
+
+Abstract Class Media {
+Private String publication
+Private ArrayList<Media> rating
+private String name
+private ArrayList<Media> categories
+FileIO fileIO
+TextUI textUI
+public void selectMedia()
+public void getCategories()
+public void getRatingList()
+}
+
+class Movies{
+
+}
+
+class Series {
+public void numberOfEpisodes()
+public void numberOfSeasons()
+}
+
+class User{
+
+private String username;
+private String password;
+private  HashSet<Media> watchedMedia
+private  HashSet<Media> savedMedia
+public String getUsername()
+public String getPassword()
+public  HashSet<Media> getWatchedMedia()
+public  HashSet<Media> getSavedMedia()
+
+}
+
+class Menu {
+FileIO fileIO
+TextUI textUI
+public menu()
+public void startMenu()
+public void mainMenu()
+public void movieSearch()
+public void chooseCategory()
+public void playMedia()
+public void saveMedia()
+login()
+createNewUser()
+}
+
+
+@enduml
